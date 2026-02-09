@@ -1,4 +1,4 @@
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme, Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,12 +7,28 @@ import { Menu1Screen } from './screens/Menu1Screen';
 import { Menu2Screen } from './screens/Menu2Screen';
 import { ProfileScreen } from './screens/ProfileScreen';
 import { colors } from './styles';
+import messaging from '@react-native-firebase/messaging';
+import { useEffect } from 'react';
+
+import {
+  getFCMToken,
+  requestUserPermission,
+} from './utils/firebase.ts';
 
 const Tab = createBottomTabNavigator();
+
+const initApp = async () => {
+    await requestUserPermission();
+    await getFCMToken();
+}
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
   const theme = isDarkMode ? colors.dark : colors.light;
+
+  useEffect(() => {
+    initApp();
+  }, []);
 
   return (
     <SafeAreaProvider>

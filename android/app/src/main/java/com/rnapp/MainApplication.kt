@@ -1,4 +1,4 @@
-package com.rnapp
+package com.verser.rnapp
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -9,7 +9,7 @@ export function Menu1Screen() {
   return (
     <View style={styles.container}>
       <WebView
-        source={{ uri: 'http://localhost:3000' }}
+        source={{ uri: 'https://minish.co.kr' }}
         style={styles.webview}
         startInLoadingState={true}
         javaScriptEnabled={true}

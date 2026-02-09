@@ -44,8 +44,8 @@ function App() {
             name="Menu1"
             component={Menu1Screen}
             options={{
-              title: '메뉴 1',
-              tabBarLabel: '메뉴1',
+              title: '웹뷰',
+              tabBarLabel: '웹뷰',
             }}
           />
           <Tab.Screen

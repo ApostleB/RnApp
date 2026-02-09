@@ -1,4 +1,5 @@
-import { Text, useColorScheme, View } from 'react-native';
+import { useColorScheme, View } from 'react-native';
+import { WebView } from 'react-native-webview';
 import { getStyles } from './Menu1Screen.styles';
 
 export function Menu1Screen() {
@@ -7,8 +8,13 @@ export function Menu1Screen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>메뉴 1</Text>
-      <Text style={styles.subtitle}>메뉴 1 페이지입니다.</Text>
+      <WebView
+        source={{ uri: 'http://localhost:3000' }}
+        style={styles.webview}
+        startInLoadingState={true}
+        javaScriptEnabled={true}
+        domStorageEnabled={true}
+      />
     </View>
   );
 }

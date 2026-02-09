@@ -94,6 +94,7 @@ The app follows a standard React Native architecture:
 - `@react-navigation/native` - Navigation library
 - `@react-navigation/bottom-tabs` - Bottom tab navigation
 - `react-native-screens` - Native screen optimization for navigation
+- `react-native-webview` - WebView component for displaying web content (used in Menu1)
 
 ## Development Notes
 

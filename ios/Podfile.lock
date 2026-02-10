@@ -2700,6 +2700,11 @@ PODS:
     - RNFBApp
     - SocketRocket
     - Yoga
+  - RNNotifee (9.1.8):
+    - React-Core
+    - RNNotifee/NotifeeCore (= 9.1.8)
+  - RNNotifee/NotifeeCore (9.1.8):
+    - React-Core
   - RNScreens (4.23.0):
     - boost
     - DoubleConversion
@@ -2846,6 +2851,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - "RNNotifee (from `../node_modules/@notifee/react-native`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - SocketRocket (~> 0.7.1)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -3026,6 +3032,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNNotifee:
+    :path: "../node_modules/@notifee/react-native"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   Yoga:
@@ -3046,7 +3054,7 @@ SPEC CHECKSUMS:
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
-  hermes-engine: 1f6b3022eec823642e0023ba73546584e8a854be
+  hermes-engine: 4c841372f76729939eefe31346c59e969897b26b
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: 846fda9475e61ec7bcbf8a3fe81edfcaeb090669
@@ -3122,9 +3130,10 @@ SPEC CHECKSUMS:
   ReactCommon: ac934cb340aee91282ecd6f273a26d24d4c55cae
   RNFBApp: b574c08010a6d3e995e654d03e34e789ebe55a35
   RNFBMessaging: da2d7f511df0368011a126b156f1a7f4be0c1b72
+  RNNotifee: 5e3b271e8ea7456a36eec994085543c9adca9168
   RNScreens: afaf526a9c804c3b4503f950cf3e67ed81e29ada
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  Yoga: 5bd0956bf9cb16f75101e78b5e852c7577bc5a45
+  Yoga: 5456bb010373068fc92221140921b09d126b116e
 
 PODFILE CHECKSUM: 1206f2c801284643d69832cff4f408431b17ea9e
 

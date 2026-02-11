@@ -2,6 +2,7 @@
 
 ```sh
 npm start
+npm run start --reset-cache
 ```
 
 ## Step 2: Build and run your app
@@ -25,5 +26,5 @@ bundle exec pod install
 ```sh
 npx run ios
 npx react-native run-ios --simulator="iPhone 16"
-npx react-native run-ios --device "RnAppVerser"
+npx react-native run-ios --device "VerserRe"
 ```

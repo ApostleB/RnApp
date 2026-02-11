@@ -9,13 +9,48 @@ import {
   setBackgroundMessageHandler,
 } from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance } from '@notifee/react-native';
+import { Platform } from 'react-native';
 
 const messaging = getMessaging(getApp());
 
-// 로컬 알림 표시 함수
-const displayNotification = async (title: string, body: string) => {
+export const initializeApp = async () => {
+  console.log("Initializing firebase");
+  await requestUserPermission();
+  await getFCMToken();
+}
+
+// iOS 전용 알림 표시 함수
+const displayNotificationApple = async (title: string, body: string) => {
+  console.log('🍎 displayNotificationApple');
+  console.log('title :', title);
+  console.log('body :', body);
+
+  try {
+    // iOS 알림 표시
+    await notifee.displayNotification({
+      title,
+      body,
+      ios: {
+        sound: 'default',
+        foregroundPresentationOptions: {
+          badge: true,
+          sound: true,
+          banner: true,
+          list: true,
+        },
+      },
+    });
+    console.log('✅ iOS 알림 표시 완료');
+  } catch (error) {
+    console.error('❌ iOS 알림 표시 실패:', error);
+  }
+};
+
+// Android 전용 알림 표시 함수
+const displayNotificationAndroid = async (title: string, body: string) => {
+  console.log('🤖 displayNotificationAndroid');
+
   // Android 채널 생성 (Android 8.0 이상 필수)
-  console.log('displayNotification');
   const channelId = await notifee.createChannel({
     id: 'default',
     name: 'Default Channel',
@@ -32,16 +67,22 @@ const displayNotification = async (title: string, body: string) => {
     body,
     android: {
       channelId,
-      smallIcon: 'ic_launcher', // 기본 앱 아이콘 사용
+      smallIcon: 'ic_launcher',
       pressAction: {
         id: 'default',
       },
     },
-    ios: {
-      sound: 'default',
-    },
   });
-  console.log('notifee end');
+  console.log('✅ Android 알림 표시 완료');
+};
+
+// 플랫폼에 따라 적절한 알림 표시 함수 호출
+const displayNotification = async (title: string, body: string) => {
+  if (Platform.OS === 'ios') {
+    await displayNotificationApple(title, body);
+  } else {
+    await displayNotificationAndroid(title, body);
+  }
 };
 
 // FCM 토큰 가져오기
@@ -57,6 +98,7 @@ export const getFCMToken = async () => {
 
 // 알림 권한 요청
 export const requestUserPermission = async () => {
+  console.log("알림 권한")
   // Firebase 메시징 권한 요청
   const authStatus = await requestPermission(messaging);
   const enabled =

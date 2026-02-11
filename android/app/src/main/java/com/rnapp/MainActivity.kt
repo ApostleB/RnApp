@@ -1,4 +1,4 @@
-package com.verser.rnapp
+package com.meplz.rnapp
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

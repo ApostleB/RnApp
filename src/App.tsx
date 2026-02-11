@@ -10,18 +10,11 @@ import { colors } from './styles';
 import messaging from '@react-native-firebase/messaging';
 import { useEffect } from 'react';
 
-import {
-  getFCMToken,
-  requestUserPermission,
-} from './utils/firebase.ts';
+import { initializeApp } from './utils/firebase.ts';
 
 const Tab = createBottomTabNavigator();
 
-const initApp = async () => {
-    await requestUserPermission();
-    await getFCMToken();
-}
-
+const initApp = async () => {await initializeApp();}
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
   const theme = isDarkMode ? colors.dark : colors.light;
